@@ -1,13 +1,15 @@
 <template>
-    <h1>Fil d'actualité</h1>
-    <div class="box_post" v-for="elem in infos" :key="elem.id">
-        <p>{{ elem.title }}</p>
-        <p>{{ elem.description }}</p>
-        <img
-            :src="`http://localhost:8000/storage/${elem.image}`"
-            height="150"
-            width="250"
-        />
+    <div class="wrapper-thread">
+        <h1>Fil d'actualité</h1>
+        <div class="box_post" v-for="elem in infos" :key="elem.id">
+            <img
+                class="box-img"
+                :src="`http://localhost:8000/storage/${elem.image}`"
+            />
+            <p class="post-title">{{ elem.title }}</p>
+            <p class="post-desc">{{ elem.description }}</p>
+            <p class="like">Like : {{ elem.like }}</p>
+        </div>
     </div>
 </template>
 
@@ -36,5 +38,28 @@ export default {
 
 <style>
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .box-img {
+        width: 250px;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .box_post {
+        border: 2px black solid;
+        margin: 0;
+    }
+    .post-title {
+        background: #bad7dd;
+        height: 50px;
+        margin: 0;
+        font-weight: bolder;
+    }
+    .post-desc {
+        background: #bad7dd;
+        height: auto;
+        margin: 0;
+    }
 }
 </style>

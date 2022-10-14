@@ -27,11 +27,11 @@
             rows="4"
             cols="50"
         />
-        <p
+        <!-- <p
             class="errors"
             v-if="this.errors.description"
             v-text="errors.description[0]"
-        ></p>
+        ></p> -->
 
         <button class="btn_post" @click="post" formaction="post-publication">
             Publié !
@@ -48,6 +48,7 @@ export default {
             title: "",
             description: "",
             image: "",
+            urlFile: "",
             info: "",
             urlImage: "",
             uploadSucces: "",
@@ -66,8 +67,9 @@ export default {
             await axios
                 .post("http://127.0.0.1:8000/api/upload", formData)
                 .then((response) => (this.urlImage = response.data));
-            console.log(this.urlImage.message);
+            console.log(this.urlImage.url);
             this.uploadSucces = this.urlImage.message;
+            this.urlFile = this.urlImage.url;
         },
         async post() {
             await axios({
@@ -77,7 +79,7 @@ export default {
                 data: {
                     title: this.title,
                     description: this.description,
-                    image: this.urlImage,
+                    image: this.urlFile,
                     id_user: 1,
                 },
             })

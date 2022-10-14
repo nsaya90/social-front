@@ -19,6 +19,9 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@1,300&display=swap");
+body {
+    margin: 0;
+}
 p {
     font-family: "Noto Sans Mono", monospace;
 }
