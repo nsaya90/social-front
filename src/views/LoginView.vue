@@ -6,7 +6,7 @@
 import Login from "@/components/Login.vue";
 export default {
     name: "LoginView",
-    setup() {},
+    data() {},
     components: { Login },
 };
 </script>

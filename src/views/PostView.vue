@@ -7,7 +7,7 @@ import Post from "@/components/Post.vue";
 
 export default {
     name: "PostView",
-    setup() {},
+    data() {},
     components: { Post },
 };
 </script>

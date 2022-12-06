@@ -12,6 +12,11 @@
                     placeholder="Email"
                     v-model="email"
                 />
+                <p
+                    class="errors"
+                    v-if="this.info"
+                    v-text="this.info.error_mail"
+                ></p>
 
                 <input
                     class="form_input"
@@ -19,6 +24,12 @@
                     placeholder="Mot de passe"
                     v-model="password"
                 />
+                <p
+                    class="errors"
+                    v-if="this.info"
+                    v-text="this.info.error_password"
+                ></p>
+
                 <button class="btn_login" @click="login">Connexion</button>
             </form>
         </div>
@@ -41,6 +52,7 @@ export default {
             password: "",
             message: "",
             info: "",
+            errors: "",
         };
     },
     methods: {
@@ -53,12 +65,13 @@ export default {
                     email: this.email,
                     password: this.password,
                 },
-            })
-                .then((response) => (this.info = response.data))
-                .catch((error) => console.log(error));
-            console.log(this.info.id_user);
+            }).then((response) => (this.info = response.data));
 
-            // console.log(this.info.succes);
+            console.log(this.info);
+
+            localStorage.setItem("token", this.info.token);
+
+            // console.log(this.info.id_user);
 
             if (this.info.succes) {
                 localStorage.setItem("id", this.info.id_user);

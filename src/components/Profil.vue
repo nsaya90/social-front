@@ -1,4 +1,5 @@
 <template>
+    <NavUser />
     <div class="wrapper_profil">
         <div class="box_info">
             <h2>Vos informations</h2>
@@ -73,9 +74,12 @@
 <script>
 import axios from "axios";
 import "animate.css";
+import NavUser from "../components/NavUser.vue";
 const idUser = localStorage.getItem("id");
+const token = localStorage.getItem("token");
 export default {
     name: "Profil",
+    components: { NavUser },
     data() {
         return {
             firstname: "",
@@ -91,6 +95,7 @@ export default {
     async mounted() {
         await axios({
             method: "get",
+            headers: { Authorization: `Bearer ${token}` },
             url: "http://127.0.0.1:8000/api/profil/" + idUser,
         }).then((response) => (this.info = response.data.user));
 

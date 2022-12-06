@@ -6,7 +6,7 @@
 import Register from "@/components/Register.vue";
 export default {
     name: "RegisterView",
-    setup() {},
+    data() {},
     components: { Register },
 };
 </script>

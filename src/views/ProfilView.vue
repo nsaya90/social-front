@@ -6,7 +6,7 @@
 import Profil from "@/components/Profil.vue";
 export default {
     name: "ProfilView",
-    setup() {},
+    data() {},
     components: { Profil },
 };
 </script>

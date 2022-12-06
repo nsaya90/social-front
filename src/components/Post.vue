@@ -1,4 +1,5 @@
 <template>
+    <NavUser />
     <h1 class="titre_post">Publication</h1>
 
     <form class="form_upload" action="upload-photo" @submit.prevent>
@@ -40,9 +41,13 @@
 </template>
 
 <script>
+const token = localStorage.getItem("token");
+
 import axios from "axios";
+import NavUser from "./NavUser.vue";
 export default {
     name: "Post",
+    components: { NavUser },
     data() {
         return {
             title: "",
@@ -74,6 +79,7 @@ export default {
         async post() {
             await axios({
                 method: "post",
+                headers: { Authorization: `Bearer ${token}` },
                 url: "http://127.0.0.1:8000/api/post",
 
                 data: {
