@@ -12,7 +12,10 @@
 
             <div class="box_btn">
                 <div class="box_btn_like">
-                    <button class="btn_like" @click="likePost(elem.id)">
+                    <button
+                        :class="likeUp"
+                        @click="likePost(elem.id, elem.id_user)"
+                    >
                         Like
                         <i class="fa fa-thumbs-up">{{ infoLikes }}</i>
                     </button>
@@ -30,7 +33,7 @@
 
 <script>
 const token = localStorage.getItem("token");
-const id_post = localStorage.getItem("id_post");
+// const id_post = localStorage.getItem("id_post");
 
 import axios from "axios";
 
@@ -47,6 +50,7 @@ export default {
             image: "",
             infoLikes: "",
             infoDisLikes: "",
+            likeUp: "",
         };
     },
 
@@ -60,41 +64,28 @@ export default {
 
         this.image = this.infos.image;
 
-        await axios({
-            method: "get",
-            headers: { Authorization: `Bearer ${token}` },
-            url: "http://127.0.0.1:8000/api/countLike/" + id_post,
-        }).then((response) => (this.infoLikes = response.data.likes));
-        console.log(this.infoLikes);
-
-        await axios({
-            method: "get",
-            headers: { Authorization: `Bearer ${token}` },
-            url: "http://127.0.0.1:8000/api/countDislike/" + id_post,
-        }).then((response) => (this.infoDisLikes = response.data.dislikes));
-        console.log(this.infoDislikes);
+        // await axios({
+        //     method: "get",
+        //     headers: { Authorization: `Bearer ${token}` },
+        //     url: "http://127.0.0.1:8000/api/countLike/" + id_post,
+        // }).then((response) => (this.infoLikes = response.data.likes));
+        // console.log(this.infoLikes);
     },
     methods: {
-        async likePost(id) {
+        async likePost(id_post, id_user) {
             axios({
                 method: "post",
                 headers: { Authorization: `Bearer ${token}` },
-                url: "http://127.0.0.1:8000/api/likePost/" + id,
+                url:
+                    "http://127.0.0.1:8000/api/like/" + id_post + "/" + id_user,
                 data: {
-                    id_post: id,
+                    idPost: id_post,
                 },
             }).then((response) => (this.like = response));
 
-            localStorage.setItem("id_post", id);
+            localStorage.setItem("id_post", id_post);
             console.log(this.like);
-
-            // Récupération des likes après un clique
-            await axios({
-                method: "get",
-                headers: { Authorization: `Bearer ${token}` },
-                url: "http://127.0.0.1:8000/api/countLike/" + id_post,
-            }).then((response) => (this.infoLikes = response.data.likes));
-            console.log(this.infoLikes);
+            this.likeUp = "btn_likeUp";
         },
 
         async dislikePost(id) {
@@ -114,6 +105,9 @@ export default {
 
 <style>
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .btn_likeUp {
+        color: blue;
+    }
     .btn_like,
     .btn_dislike {
         font-size: 17px;
