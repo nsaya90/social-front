@@ -49,6 +49,7 @@ export default {
             infoDisLikes: "",
         };
     },
+
     async mounted() {
         await axios({
             method: "get",
@@ -86,6 +87,14 @@ export default {
 
             localStorage.setItem("id_post", id);
             console.log(this.like);
+
+            // Récupération des likes après un clique
+            await axios({
+                method: "get",
+                headers: { Authorization: `Bearer ${token}` },
+                url: "http://127.0.0.1:8000/api/countLike/" + id_post,
+            }).then((response) => (this.infoLikes = response.data.likes));
+            console.log(this.infoLikes);
         },
 
         async dislikePost(id) {
