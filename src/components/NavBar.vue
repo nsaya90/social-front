@@ -19,7 +19,11 @@
 <script>
 export default {
     name: "NavBar",
-    data() {},
+    data() {
+        return {
+            id_user: id,
+        };
+    },
 };
 </script>
 

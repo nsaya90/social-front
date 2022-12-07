@@ -6,7 +6,7 @@
 import Home from "@/components/Home.vue";
 export default {
     name: "HomeView",
-    data() {},
+
     components: { Home },
 };
 </script>

@@ -112,6 +112,8 @@ export default {
             }
 
             console.log(this.info);
+
+            window.location.href = "http://localhost:8080/login";
         },
     },
 };

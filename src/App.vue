@@ -1,19 +1,37 @@
 <template>
     <nav>
-        <router-link to="/"
-            ><img
-                src="../src/assets/logo_social.png"
-                alt="logo"
-                width="140"
-                height="80"
-            />
-        </router-link>
+        <div v-if="id_user">
+            <router-link to="/post-thread"
+                ><img
+                    src="../src/assets/logo_social.png"
+                    alt="logo"
+                    width="140"
+                    height="80"
+                />
+            </router-link>
+        </div>
+        <div v-else>
+            <router-link to="/"
+                ><img
+                    src="../src/assets/logo_social.png"
+                    alt="logo"
+                    width="140"
+                    height="80"
+                />
+            </router-link>
+        </div>
     </nav>
     <router-view />
 </template>
 <script>
+const id = localStorage.getItem("id");
 export default {
     name: "App",
+    data() {
+        return {
+            id_user: id,
+        };
+    },
 };
 </script>
 <style>

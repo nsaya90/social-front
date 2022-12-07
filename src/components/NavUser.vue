@@ -12,6 +12,11 @@
                 <li>
                     <router-link to="/post-thread">Fil d'actualité</router-link>
                 </li>
+                <li>
+                    <button class="button-2" @click="logout">
+                        Deconnexion
+                    </button>
+                </li>
             </ul>
         </div>
     </div>
@@ -20,7 +25,12 @@
 <script>
 export default {
     name: "NavUser",
-    data() {},
+    methods: {
+        logout() {
+            localStorage.clear();
+            window.location.href = "http://localhost:8080";
+        },
+    },
 };
 </script>
 
@@ -96,6 +106,31 @@ export default {
     }
     .menu__item:hover {
         background-color: #cfd8dc;
+    }
+
+    /* CSS */
+    .button-2 {
+        background-color: rgba(51, 51, 51, 0.05);
+        border-radius: 8px;
+        border-width: 0;
+        color: #333333;
+        cursor: pointer;
+        display: inline-block;
+        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+            sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        list-style: none;
+        margin: 0;
+        padding: 10px 12px;
+        text-align: center;
+        transition: all 200ms;
+        vertical-align: baseline;
+        white-space: nowrap;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
     }
 }
 </style>

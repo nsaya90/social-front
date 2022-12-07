@@ -12,7 +12,7 @@
             accept=".png, .jpg, .jpeg"
         />
         <button class="btn_upload" @click="upload" formaction="upload-photo">
-            Valider
+            Validez votre photo
         </button>
         <h3 v-if="uploadSucces">{{ uploadSucces }}</h3>
     </form>
