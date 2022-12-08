@@ -77,6 +77,8 @@ import "animate.css";
 import NavUser from "../components/NavUser.vue";
 const idUser = localStorage.getItem("id");
 const token = localStorage.getItem("token");
+
+console.log(idUser);
 export default {
     name: "ProfilView",
     components: { NavUser },

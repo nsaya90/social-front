@@ -2,7 +2,7 @@
     <NavUser />
     <div class="wrapper-thread">
         <h1>Fil d'actualitée</h1>
-        <button @click="forceUpdate">update</button>
+
         <div class="box_post" v-for="elem in infos" :key="elem.id">
             <Post
                 :path="`http://localhost:8000/storage/${elem.image}`"
@@ -24,6 +24,8 @@
 
 <script>
 const token = localStorage.getItem("token");
+const idUser = localStorage.getItem("id");
+console.log(idUser);
 // const id_post = localStorage.getItem("id_post");
 
 import axios from "axios";
@@ -62,17 +64,16 @@ export default {
 
     methods: {
         async likePost(id_post, id_user) {
+            localStorage.setItem("id_post", id_post);
+
             axios({
                 method: "post",
                 headers: { Authorization: `Bearer ${token}` },
-                url:
-                    "http://127.0.0.1:8000/api/like/" + id_post + "/" + id_user,
+                url: "http://127.0.0.1:8000/api/like/" + id_post + "/" + idUser,
                 data: {
                     idPost: id_post,
                 },
             }).then((response) => (this.like = response));
-
-            localStorage.setItem("id_post", id_post);
 
             // relance de la requête pour afficher le nombre de like
             await axios({
@@ -80,7 +81,6 @@ export default {
                 headers: { Authorization: `Bearer ${token}` },
                 url: "http://127.0.0.1:8000/api/all-post",
             }).then((response) => (this.infos = response.data.allPost));
-            console.log(this.infos);
         },
     },
 };

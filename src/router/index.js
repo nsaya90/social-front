@@ -14,7 +14,7 @@ const routes = [
     },
     {
         path: "/post-thread",
-        name: "PostThreadView",
+        name: "PostThread",
         component: PostThreadView,
     },
     {

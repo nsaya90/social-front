@@ -93,9 +93,11 @@ export default {
                 .catch((error) => {
                     this.errors = error.response.data.errors;
                 });
+
+            // this.$router.replace({ path: "/post-thread" });
             console.log(this.errors);
 
-            // location = "http://localhost:8080/post-thread";
+            location = "http://localhost:8080/post-thread";
         },
     },
 };

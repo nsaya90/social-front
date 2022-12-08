@@ -105,10 +105,14 @@ export default {
                     this.errors = error.response.data.errors;
                 });
 
+            // this.$router.replace({ path: "/login" });
+
             console.log(this.info.error_mail);
 
             if (this.info.error_mail) {
                 this.message = this.info.error_mail;
+            } else {
+                location = "http://localhost:8080/login";
             }
 
             console.log(this.info);
