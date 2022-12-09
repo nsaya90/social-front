@@ -1,23 +1,33 @@
 <template>
     <NavUser />
     <div class="wrapper-thread">
-        <h1>Fil d'actualitée</h1>
+        <h1>Fil d'actualités</h1>
 
         <div class="box_post" v-for="elem in infos" :key="elem.id">
             <Post
+                class="card-post"
                 :path="`http://localhost:8000/storage/${elem.image}`"
-                :title="`${elem.title}`"
-                :description="`${elem.description}`"
-                :key="postReload"
+                :firstname="`${elem.firstname}`"
+                :lastname="`${elem.lastname}`"
             ></Post>
-            <div class="box_btn">
-                <div class="box_btn_like">
-                    <ButtonLike
-                        @click="likePost(elem.id, elem.id_user)"
-                        :like="`${elem.like}`"
-                    ></ButtonLike>
-                </div>
-            </div>
+
+            <ButtonLike
+                @click="likePost(elem.id, elem.id_user)"
+                :like="`${elem.like}`"
+                :icon="`https://img.icons8.com/windows/32/null/filled-like.png`"
+                class="btn_like"
+                v-if="elem.like"
+            ></ButtonLike>
+
+            <ButtonLike
+                v-else
+                @click="likePost(elem.id, elem.id_user)"
+                :like="`${elem.like}`"
+                :icon="`https://img.icons8.com/ios-glyphs/32/null/hearts.png`"
+                class="btn_like"
+            ></ButtonLike>
+
+            <Post :description="`${elem.description}`"></Post>
         </div>
     </div>
 </template>
@@ -47,7 +57,7 @@ export default {
             infoLikes: "",
             infoDisLikes: "",
             like: "",
-            postReload: 0,
+            countLike: "",
         };
     },
 
@@ -65,7 +75,6 @@ export default {
     methods: {
         async likePost(id_post, id_user) {
             localStorage.setItem("id_post", id_post);
-
             axios({
                 method: "post",
                 headers: { Authorization: `Bearer ${token}` },
@@ -74,7 +83,6 @@ export default {
                     idPost: id_post,
                 },
             }).then((response) => (this.like = response));
-
             // relance de la requête pour afficher le nombre de like
             await axios({
                 method: "get",
@@ -90,19 +98,18 @@ export default {
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     /* CSS */
 
-    .btn_like {
-        font-size: 17px;
-    }
-    .box_btn {
+    .wrapper-thread h1 {
+        text-align: center;
         display: flex;
-        justify-content: center;
-
-        height: auto;
     }
 
     .box_post {
-        border-bottom: #000000 solid 1px;
-        margin: 0;
+        background: white;
+        border-bottom: #d5d5d5 20px;
+    }
+
+    .card-post {
+        margin-left: 10px;
     }
 }
 </style>

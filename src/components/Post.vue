@@ -1,12 +1,10 @@
 <template>
-    <img :src="path" class="box_img" />
+    <div class="box-user">
+        <h4 class="post-user">{{ firstname }} {{ lastname }}</h4>
+        <p class="post-desc">{{ description }}</p>
+    </div>
 
-    <p class="post-title">{{ title }}</p>
-    <p class="post-desc">{{ description }}</p>
-
-    <!-- <img class="box-img" :src="`http://localhost:8000/storage/${elem.image}`" />
-    <p class="post-title">{{ elem.title }}</p>
-    <p class="post-desc">{{ elem.description }}</p> -->
+    <img :src="path" class="box-img" />
 </template>
 
 <script>
@@ -15,28 +13,31 @@ export default {
     data() {
         return {};
     },
-    props: ["path", "title", "description"],
+    props: ["path", "firstname", "lastname", "description"],
     methods: {},
 };
 </script>
 
 <style>
-.box_img {
-    width: 300px;
+.box-img {
+    width: 100%;
     height: auto;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    background-position: center;
+    background-size: cover;
 }
-.post-title {
-    background: #bad7dd;
-    height: 50px;
-    margin: 0;
-    font-weight: bolder;
-}
+
 .post-desc {
-    background: #bad7dd;
     height: auto;
+    margin-left: 10px;
     margin: 0;
+}
+
+.post-user {
+    margin-left: 10px;
+}
+
+.box-user {
+    display: flex;
+    align-items: center;
 }
 </style>

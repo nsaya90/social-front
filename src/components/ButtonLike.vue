@@ -1,63 +1,46 @@
 <template>
-    <button class="button-23">
-        Like
-        <i class="fa fa-thumbs-up">{{ like }}</i>
-    </button>
+    <button class="button-16"><img :src="icon" />{{ like }} j'aime</button>
 </template>
 
 <script>
 export default {
     name: "ButtonLike",
-    data() {
-        return {};
-    },
-    props: ["like"],
+
+    props: ["like", "icon"],
 };
 </script>
 
 <style>
-.button-23 {
-    background-color: #ffffff;
-    border: 1px solid #222222;
-    border-radius: 8px;
-    box-sizing: border-box;
-    color: #222222;
+/* CSS */
+.button-16 {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: none;
+    border-radius: 4px;
+    color: #3c4043;
     cursor: pointer;
-    display: inline-block;
-    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
-        "Helvetica Neue", sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 20px;
-    margin: 0;
-    outline: none;
-    padding: 13px 23px;
-    position: relative;
+    font-family: arial, sans-serif;
+    font-size: 14px;
+    height: 36px;
+    line-height: 27px;
+    min-width: 54px;
+    padding: 0 16px;
     text-align: center;
-    text-decoration: none;
-    touch-action: manipulation;
-    transition: box-shadow 0.2s, -ms-transform 0.1s, -webkit-transform 0.1s,
-        transform 0.1s;
     user-select: none;
     -webkit-user-select: none;
-    width: auto;
+    touch-action: manipulation;
+    white-space: pre;
 }
 
-.button-23:focus-visible {
-    box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
-    transition: box-shadow 0.2s;
+.button-16:hover {
+    border-color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 1px;
+    color: #202124;
 }
 
-.button-23:active {
-    background-color: #f7f7f7;
-    border-color: #000000;
-    transform: scale(0.96);
-}
-
-.button-23:disabled {
-    border-color: #dddddd;
-    color: #dddddd;
-    cursor: not-allowed;
-    opacity: 1;
+.button-16:focus {
+    border-color: #4285f4;
+    outline: none;
 }
 </style>
