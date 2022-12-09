@@ -39,7 +39,6 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@1,300&display=swap");
 body {
     margin: 0;
-    background-color: #d5d5d5;
 }
 p {
     font-family: "Noto Sans Mono", monospace;

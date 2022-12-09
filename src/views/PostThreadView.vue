@@ -1,8 +1,6 @@
 <template>
     <NavUser />
     <div class="wrapper-thread">
-        <h1>Fil d'actualités</h1>
-
         <div class="box_post" v-for="elem in infos" :key="elem.id">
             <Post
                 class="card-post"
@@ -105,7 +103,7 @@ export default {
 
     .box_post {
         background: white;
-        border-bottom: #d5d5d5 20px;
+        border-bottom: #d5d5d5 solid 20px;
     }
 
     .card-post {

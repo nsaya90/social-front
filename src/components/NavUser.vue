@@ -1,23 +1,17 @@
 <template>
     <div class="wrapper_navBarUser">
-        <div class="hamburger-menu">
-            <input id="menu__toggle" type="checkbox" />
-            <label class="menu__btn" for="menu__toggle">
-                <span></span>
-            </label>
+        <div class="user-menu">
+            <router-link to="/profil"
+                ><img
+                    src="https://img.icons8.com/ios/40/null/user-male-circle.png"
+            /></router-link>
+            <router-link to="/post"
+                ><img src="https://img.icons8.com/ios/40/null/plus-2-math.png"
+            /></router-link>
 
-            <ul class="menu__box">
-                <li><router-link to="/profil">Profil</router-link></li>
-                <li><router-link to="/post">Publication</router-link></li>
-                <li>
-                    <router-link to="/post-thread">Fil d'actualité</router-link>
-                </li>
-                <li>
-                    <button class="button-2" @click="logout">
-                        Deconnexion
-                    </button>
-                </li>
-            </ul>
+            <button class="button-2" @click="logout">
+                <img src="https://img.icons8.com/ios/40/null/exit.png" />
+            </button>
         </div>
     </div>
 </template>
@@ -36,101 +30,19 @@ export default {
 
 <style>
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    #menu__toggle {
-        opacity: 0;
-    }
-    #menu__toggle:checked + .menu__btn > span {
-        transform: rotate(45deg);
-    }
-    #menu__toggle:checked + .menu__btn > span::before {
-        top: 0;
-        transform: rotate(0deg);
-    }
-    #menu__toggle:checked + .menu__btn > span::after {
-        top: 0;
-        transform: rotate(90deg);
-    }
-    #menu__toggle:checked ~ .menu__box {
-        left: 0 !important;
-    }
-    .menu__btn {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        width: 26px;
-        height: 26px;
-        cursor: pointer;
-        z-index: 1;
-    }
-    .menu__btn > span,
-    .menu__btn > span::before,
-    .menu__btn > span::after {
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        background-color: #616161;
-        transition-duration: 0.25s;
-    }
-    .menu__btn > span::before {
-        content: "";
-        top: -8px;
-    }
-    .menu__btn > span::after {
-        content: "";
-        top: 8px;
-    }
-    .menu__box {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: -100%;
-        width: 250px;
-        height: 8%;
-        margin: 0;
-        padding: 80px 0;
-        list-style: none;
-        background-color: #eceff1;
-        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-        transition-duration: 0.25s;
-    }
-    .menu__item {
-        display: block;
-        padding: 12px 24px;
-        color: #333;
-        font-family: "Roboto", sans-serif;
-        font-size: 20px;
-        font-weight: 600;
-        text-decoration: none;
-        transition-duration: 0.25s;
-    }
-    .menu__item:hover {
-        background-color: #cfd8dc;
+    /* CSS */
+
+    .user-menu {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
     }
 
-    /* CSS */
     .button-2 {
-        background-color: rgba(51, 51, 51, 0.05);
-        border-radius: 8px;
-        border-width: 0;
-        color: #333333;
-        cursor: pointer;
-        display: inline-block;
-        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
-            sans-serif;
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 20px;
-        list-style: none;
-        margin: 0;
-        padding: 10px 12px;
-        text-align: center;
-        transition: all 200ms;
-        vertical-align: baseline;
-        white-space: nowrap;
-        user-select: none;
-        -webkit-user-select: none;
-        touch-action: manipulation;
+        background-color: white;
+        border: none;
+        height: 40px;
+        width: 40px;
     }
 }
 </style>
