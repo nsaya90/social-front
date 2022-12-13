@@ -1,11 +1,8 @@
 <template>
     <NavUser />
     <div class="wrapper_profil">
-        <button @click="publication" class="btn_post">
-            Ajout d'une publication
-        </button>
         <div class="box_info">
-            <h2>Vos informations</h2>
+            <h2>Votre profil</h2>
             <p>Nom : {{ info.firstname }}</p>
             <p>Prénom : {{ info.lastname }}</p>
             <p>Email : {{ info.email }}</p>
@@ -107,9 +104,6 @@ export default {
         console.log(this.info);
     },
     methods: {
-        publication() {
-            this.$router.push({ path: "/post" });
-        },
         formUpdate() {
             this.update = true;
         },

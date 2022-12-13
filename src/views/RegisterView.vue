@@ -1,10 +1,7 @@
 <template>
     <div class="wrapper_register">
         <div class="box_titre_register">
-            <h2>
-                Inscrivez-vous pour voir les publications et musiques de vos
-                amis.
-            </h2>
+            <h2>Inscrivez-vous pour voir les publications.</h2>
         </div>
         <div class="box_register">
             <form class="form_register" action="" @submit.prevent>
@@ -125,17 +122,14 @@ export default {
     /* Styles pour cette Media Queries */
 
     .form_register {
-        background: #f1e9db;
-        border-radius: 10px;
         height: 70%;
-        padding: 25px;
         display: flex;
         align-items: center;
         flex-direction: column;
         justify-content: center;
     }
     .form_register input {
-        margin: 15px;
+        margin: 10px;
         height: 30px;
         width: 200px;
     }
@@ -160,7 +154,7 @@ export default {
         align-items: center;
     }
     .box_register {
-        height: 700px;
+        height: 500px;
         width: 100%;
         display: flex;
         flex-direction: column;

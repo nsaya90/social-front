@@ -10,7 +10,9 @@
             /></router-link>
 
             <button class="button-2" @click="logout">
-                <img src="https://img.icons8.com/ios/40/null/exit.png" />
+                <img
+                    src="https://img.icons8.com/external-sbts2018-outline-sbts2018/40/000000/external-logout-social-media-basic-1-sbts2018-outline-sbts2018.png"
+                />
             </button>
         </div>
     </div>
@@ -32,6 +34,11 @@ export default {
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     /* CSS */
 
+    .wrapper_navBarUser {
+        background-color: white;
+
+        width: 100%;
+    }
     .user-menu {
         display: flex;
         justify-content: space-around;

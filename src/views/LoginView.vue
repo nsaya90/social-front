@@ -89,17 +89,15 @@ export default {
     /* Styles pour cette Media Queries */
 
     .form_login {
-        background: #f1e9db;
-        border-radius: 10px;
         height: 80%;
-        padding: 50px;
+
         display: flex;
         align-items: center;
         flex-direction: column;
         justify-content: center;
     }
     .form_login input {
-        margin: 15px;
+        margin: 10px;
         height: 30px;
         width: 200px;
     }
@@ -134,6 +132,7 @@ export default {
     }
 
     .btn_login {
+        margin: 20px;
         position: relative;
         font-size: 17px;
         text-transform: uppercase;

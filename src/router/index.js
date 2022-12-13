@@ -5,12 +5,18 @@ import HomeView from "../views/HomeView.vue";
 import ProfilView from "../views/ProfilView.vue";
 import PostView from "../views/PostView.vue";
 import PostThreadView from "../views/PostThreadView.vue";
+import CommentView from "../views/CommentView.vue";
 
 const routes = [
     {
         path: "/",
         name: "Home",
         component: HomeView,
+    },
+    {
+        path: "/comment",
+        name: "Comment",
+        component: CommentView,
     },
     {
         path: "/post-thread",

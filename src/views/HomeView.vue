@@ -2,9 +2,9 @@
     <div class="wrapper_home">
         <h1>Bienvenue sur This Social</h1>
         <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
-            est commodi dignissimos eaque at soluta ipsum! Aspernatur rerum
-            maiores quam!
+            Créez un compte ou connectez-vous à This Social. Connectez-vous avec
+            vos amis, la famille et d'autres connaissances. Partagez des photos
+            et vos publications avec tout le monde !
         </p>
         <div class="box_redirect_register">
             <p>Venez rejoindre la communauté this social !</p>

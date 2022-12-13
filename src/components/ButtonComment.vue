@@ -1,17 +1,23 @@
 <template>
-    <button class="button-16"><img :src="icon" /> {{ like }} j'aime</button>
+    <button class="button-16">
+        <img :src="icon" />
+        <p>{{ name }}</p>
+    </button>
 </template>
 
 <script>
 export default {
-    name: "ButtonLike",
+    name: "ButtonComment",
 
-    props: ["like", "icon"],
+    props: ["icon", "name"],
 };
 </script>
 
 <style>
 /* CSS */
+.button-16 p {
+    font-weight: bolder;
+}
 .button-16 {
     display: flex;
     align-items: center;
