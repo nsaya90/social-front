@@ -18,9 +18,6 @@
     </form>
 
     <form class="form_post" action="post-publication" @submit.prevent>
-        <input type="text" v-model="title" placeholder="Titre" />
-        <!-- <p class="errors" v-if="this.errors.title" v-text="errors.title[0]"></p> -->
-
         <textarea
             type="text"
             v-model="description"
@@ -51,7 +48,6 @@ export default {
     components: { NavUser },
     data() {
         return {
-            title: "",
             description: "",
             image: "",
             urlFile: "",

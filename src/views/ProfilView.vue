@@ -6,11 +6,26 @@
             <p>Nom : {{ info.firstname }}</p>
             <p>Prénom : {{ info.lastname }}</p>
             <p>Email : {{ info.email }}</p>
-            <p>Mot de passe : {{ info.password }}</p>
 
             <button class="btn_update" @click="formUpdate">
                 Modifier vos informations
             </button>
+        </div>
+
+        <div class="box-userPost" v-for="item in post_user" :key="item.id">
+            <Post
+                class="card-post"
+                :path="`http://localhost:8000/storage/${item.image}`"
+                :firstname="`${item.firstname}`"
+                :lastname="`${item.lastname}`"
+            ></Post>
+            <div class="box_info-user">
+                <p>
+                    {{ item.firstname }} {{ item.lastname }}
+                    <span class="description">{{ item.description }}</span>
+                </p>
+            </div>
+            <p class="date">Publié le {{ item.date_post }}</p>
         </div>
 
         <div class="box_update" v-if="update">
@@ -75,13 +90,14 @@
 import axios from "axios";
 import "animate.css";
 import NavUser from "../components/NavUser.vue";
+import Post from "@/components/Post.vue";
 const idUser = localStorage.getItem("id");
 const token = localStorage.getItem("token");
 
 console.log(idUser);
 export default {
     name: "ProfilView",
-    components: { NavUser },
+    components: { NavUser, Post },
     data() {
         return {
             firstname: "",
@@ -92,6 +108,7 @@ export default {
             infoUpdate: "",
             update: "",
             errors: "",
+            post_user: "",
         };
     },
     async mounted() {
@@ -101,7 +118,15 @@ export default {
             url: "http://127.0.0.1:8000/api/profil/" + idUser,
         }).then((response) => (this.info = response.data.user));
 
-        console.log(this.info);
+        // console.log(this.info);
+
+        await axios({
+            method: "get",
+            headers: { Authorization: `Bearer ${token}` },
+            url: "http://127.0.0.1:8000/api/user-post/" + idUser,
+        }).then((response) => (this.post_user = response.data.post_user));
+
+        console.log(this.post_user);
     },
     methods: {
         formUpdate() {
@@ -137,6 +162,12 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+    }
+    span.description {
+        font-weight: lighter;
+    }
+    .box_info-user {
+        font-weight: bolder;
     }
     .box_info {
         background: #f1e9db;

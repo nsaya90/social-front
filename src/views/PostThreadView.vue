@@ -22,8 +22,15 @@
                 ></button-comment>
             </div>
             <p class="count-like">{{ elem.like }} j'aime</p>
-            <Post :description="`${elem.description}`"></Post>
-            <p>Publié le {{ elem.date_post }}</p>
+
+            <div class="box_info-user">
+                <p>
+                    {{ elem.firstname }} {{ elem.lastname }}
+                    <span class="description">{{ elem.description }}</span>
+                </p>
+            </div>
+
+            <p class="date">Publié le {{ elem.date_post }}</p>
         </div>
     </div>
 </template>
@@ -103,6 +110,17 @@ export default {
         text-align: center;
         display: flex;
     }
+
+    span.description {
+        font-size: lighter;
+    }
+    .box_info-user {
+        font-weight: bolder;
+    }
+
+    .date {
+        font-size: small;
+    }
     .count-like {
         font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
             Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
@@ -121,7 +139,6 @@ export default {
 
     .box-btn {
         display: flex;
-        justify-content: space-around;
     }
 
     .button-16 {

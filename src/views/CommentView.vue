@@ -7,14 +7,14 @@
             :firstname="`${elem.firstname}`"
             :lastname="`${elem.lastname}`"
         ></Post>
-        <post :description="`${elem.description}`"></post>
+        <!-- <Post :description="`${elem.description}`"></Post> -->
 
         <div class="box_comment" v-for="value in getComment" :key="value.id">
             <p class="user-info">
                 {{ value.firstname }} {{ value.lastname }}
                 <span class="comment">{{ value.comment }}</span>
             </p>
-            <p class="date_comment">Publié le {{ value.date_comment }}</p>
+            <p class="date">Publié le {{ value.date_comment }}</p>
         </div>
     </div>
     <div class="box_addComment">
@@ -89,7 +89,7 @@ export default {
 
 <style>
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    .date_comment {
+    .date {
         font-size: small;
     }
     .box_comment {
