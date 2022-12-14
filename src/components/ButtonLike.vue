@@ -1,5 +1,5 @@
 <template>
-    <button class="button-16"><img :src="icon" /> {{ like }} j'aime</button>
+    <button class="button-16"><img :src="icon" /> {{ like }}</button>
 </template>
 
 <script>

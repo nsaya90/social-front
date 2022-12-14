@@ -42,6 +42,7 @@
 
 <script>
 const token = localStorage.getItem("token");
+const id = localStorage.getItem("id");
 
 import axios from "axios";
 import NavUser from "@/components/NavUser.vue";
@@ -86,7 +87,7 @@ export default {
                     title: this.title,
                     description: this.description,
                     image: this.urlFile,
-                    id_user: 1,
+                    id_user: id,
                 },
             })
                 .then((response) => (this.info = response.data))

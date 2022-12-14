@@ -1,29 +1,19 @@
 <template>
     <NavUser />
     <div class="wrapper-thread">
-        <div class="box_post" v-for="elem in infos" :key="elem.id">
+        <div class="box-post" v-for="elem in infos" :key="elem.id">
             <Post
                 class="card-post"
                 :path="`http://localhost:8000/storage/${elem.image}`"
                 :firstname="`${elem.firstname}`"
                 :lastname="`${elem.lastname}`"
             ></Post>
-            <div class="test">
+            <div class="box-btn">
                 <ButtonLike
                     @click="likePost(elem.id, elem.id_user)"
-                    :like="`${elem.like}`"
-                    :icon="`https://img.icons8.com/windows/32/null/filled-like.png`"
+                    :icon="`https://img.icons8.com/ios/32/null/like--v1.png`"
                     class="btn_like"
-                    v-if="elem.like"
                 ></ButtonLike>
-
-                <button-like
-                    v-else
-                    @click="likePost(elem.id, elem.id_user)"
-                    :like="`${elem.like}`"
-                    :icon="`https://img.icons8.com/ios-glyphs/32/null/hearts.png`"
-                    class="btn_like"
-                ></button-like>
 
                 <button-comment
                     @click="commentPost(elem.id)"
@@ -31,7 +21,7 @@
                     class="btn_like"
                 ></button-comment>
             </div>
-
+            <p class="count-like">{{ elem.like }} j'aime</p>
             <Post :description="`${elem.description}`"></Post>
             <p>Publié le {{ elem.date_post }}</p>
         </div>
@@ -113,8 +103,14 @@ export default {
         text-align: center;
         display: flex;
     }
+    .count-like {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+            Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+            sans-serif;
+        font-weight: bolder;
+    }
 
-    .box_post {
+    .box-post {
         background: white;
         border-bottom: #d5d5d5 solid 7px;
     }
@@ -123,7 +119,7 @@ export default {
         margin-left: 10px;
     }
 
-    .test {
+    .box-btn {
         display: flex;
         justify-content: space-around;
     }
