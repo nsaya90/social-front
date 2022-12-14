@@ -14,6 +14,7 @@
                 {{ value.firstname }} {{ value.lastname }}
                 <span class="comment">{{ value.comment }}</span>
             </p>
+            <p class="date_comment">Publié le {{ value.date_comment }}</p>
         </div>
     </div>
     <div class="box_addComment">
@@ -80,11 +81,7 @@ export default {
                 });
             console.log(this.postComment);
 
-            await axios({
-                method: "get",
-                headers: { Authorization: `Bearer ${token}` },
-                url: "http://127.0.0.1:8000/api/showComment/" + idPost,
-            }).then((response) => (this.getComment = response.data.comment));
+            this.$router.go(0);
         },
     },
 };
@@ -92,6 +89,9 @@ export default {
 
 <style>
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .date_comment {
+        font-size: small;
+    }
     .box_comment {
         height: auto;
     }

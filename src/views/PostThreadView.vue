@@ -33,6 +33,7 @@
             </div>
 
             <Post :description="`${elem.description}`"></Post>
+            <p>Publié le {{ elem.date_post }}</p>
         </div>
     </div>
 </template>
