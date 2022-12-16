@@ -10,16 +10,6 @@
                 />
             </router-link>
         </div>
-        <!-- <div v-else>
-            <router-link to="/"
-                ><img
-                    src="../src/assets/logo_social.png"
-                    alt="logo"
-                    width="140"
-                    height="80"
-                />
-            </router-link>
-        </div> -->
     </nav>
     <router-view />
 </template>
@@ -66,6 +56,5 @@ a {
     text-decoration: none;
     font-size: 15px;
     font-weight: bolder;
-    color: #5db7de;
 }
 </style>

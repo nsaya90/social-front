@@ -1,17 +1,18 @@
 import { createRouter, createWebHistory } from "vue-router";
 import RegisterView from "../views/RegisterView.vue";
-import HomeView from "../views/HomeView.vue";
+
 import ProfilView from "../views/ProfilView.vue";
 import PostView from "../views/PostView.vue";
 import PostThreadView from "../views/PostThreadView.vue";
 import CommentView from "../views/CommentView.vue";
 import HomePage from "../views/HomePage.vue";
+import UpdateProfilView from "../views/UpdateProfilView.vue";
 
 const routes = [
     {
         path: "/",
-        name: "Home",
-        component: HomeView,
+        name: "HomePage",
+        component: HomePage,
     },
     {
         path: "/comment",
@@ -40,9 +41,9 @@ const routes = [
         component: ProfilView,
     },
     {
-        path: "/home",
-        name: "HomePage",
-        component: HomePage,
+        path: "/update-profil",
+        name: "update-profil",
+        component: UpdateProfilView,
     },
 ];
 

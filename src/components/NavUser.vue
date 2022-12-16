@@ -4,7 +4,8 @@
             <router-link to="/profil"
                 ><img
                     src="https://img.icons8.com/ios/40/null/user-male-circle.png"
-            /></router-link>
+                />
+            </router-link>
             <router-link to="/post"
                 ><img src="https://img.icons8.com/ios/40/null/plus-2-math.png"
             /></router-link>

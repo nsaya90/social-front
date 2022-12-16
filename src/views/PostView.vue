@@ -168,7 +168,6 @@ export default {
     .form_post input,
     textarea {
         margin: 15px;
-        color: #5db7de;
     }
     .form_post label {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,

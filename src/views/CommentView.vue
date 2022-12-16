@@ -1,33 +1,41 @@
 <template>
-    <NavUser />
-    <div class="box_post" v-for="elem in infos" :key="elem.id">
-        <Post
-            class="card-post"
-            :path="`http://localhost:8000/storage/${elem.image}`"
-            :firstname="`${elem.firstname}`"
-            :lastname="`${elem.lastname}`"
-        ></Post>
-        <Post :description="`${elem.description}`"></Post>
+    <div class="wrapper_comment">
+        <NavUser />
+        <div class="box_post" v-for="elem in infos" :key="elem.id">
+            <Post
+                class="card-post"
+                :path="`http://localhost:8000/storage/${elem.image}`"
+                :firstname="`${elem.firstname}`"
+                :lastname="`${elem.lastname}`"
+            ></Post>
+            <Post :description="`${elem.description}`"></Post>
 
-        <div class="box_comment" v-for="value in getComment" :key="value.id">
-            <p class="user-info">
-                {{ value.firstname }} {{ value.lastname }}
-                <span class="comment">{{ value.comment }}</span>
-            </p>
-            <p class="date">Publié le {{ value.date_comment }}</p>
+            <div
+                class="box_comment"
+                v-for="value in getComment"
+                :key="value.id"
+            >
+                <p class="user-info">
+                    {{ value.firstname }} {{ value.lastname }}
+                    <span class="comment">{{ value.comment }}</span>
+                </p>
+                <p class="date">Publié le {{ value.date_comment }}</p>
+            </div>
         </div>
-    </div>
-    <div class="box_addComment">
-        <form action="" @submit.prevent>
-            <textarea
-                v-model="commentaire"
-                placeholder="Ajout d'un commentaire"
-            ></textarea>
-            <button-comment
-                @click="addComment"
-                :name="'Publier'"
-            ></button-comment>
-        </form>
+        <div class="box_addComment">
+            <div class="box_form-comment">
+                <form class="form_comment" action="" @submit.prevent>
+                    <textarea
+                        v-model="commentaire"
+                        placeholder="Ajout d'un commentaire"
+                    ></textarea>
+                    <button-comment
+                        @click="addComment"
+                        :name="'Publier'"
+                    ></button-comment>
+                </form>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -89,11 +97,21 @@ export default {
 
 <style>
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .wrapper_comment {
+        height: 100vh;
+        width: 100%;
+    }
+    .box_form-comment {
+        margin: 10px;
+        border: 2px solid lightgray;
+        border-radius: 1em;
+    }
     .date {
         font-size: small;
     }
     .box_comment {
         height: auto;
+        margin: 5px;
     }
     .user-info {
         font-weight: bolder;
@@ -103,24 +121,22 @@ export default {
     }
 
     .box_addComment {
-        border: 2px solid black;
-        border-radius: 2em;
-        height: 50px;
-        margin-top: 15px;
-        display: flex;
-        justify-content: center;
-    }
-
-    .box_addComment form {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
+        border-top: 2px solid black;
+        position: fixed;
         width: 100%;
     }
-    .box_addComment form textarea,
-    form textarea:focus {
-        outline: none;
+
+    .form_comment {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .form_comment textarea {
         border: none;
+        outline: none;
+        width: 50%;
+        padding-top: 15px;
     }
 }
 </style>

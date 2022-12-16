@@ -125,7 +125,7 @@ export default {
             if (this.info.error_mail) {
                 this.message = this.info.error_mail;
             } else {
-                location = "http://localhost:8080/home";
+                location = "http://localhost:8080/";
             }
 
             console.log(this.info);
