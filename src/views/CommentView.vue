@@ -7,7 +7,7 @@
             :firstname="`${elem.firstname}`"
             :lastname="`${elem.lastname}`"
         ></Post>
-        <!-- <Post :description="`${elem.description}`"></Post> -->
+        <Post :description="`${elem.description}`"></Post>
 
         <div class="box_comment" v-for="value in getComment" :key="value.id">
             <p class="user-info">
@@ -54,7 +54,7 @@ export default {
             headers: { Authorization: `Bearer ${token}` },
             url: "http://127.0.0.1:8000/api/comment/" + idPost,
         }).then((response) => (this.infos = response.data.comment));
-        // console.log(this.infos);
+        console.log(this.infos);
 
         await axios({
             method: "get",

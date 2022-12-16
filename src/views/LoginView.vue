@@ -14,8 +14,8 @@
                 />
                 <p
                     class="errors"
-                    v-if="this.info"
-                    v-text="this.info.error_mail"
+                    v-if="this.infoUser"
+                    v-text="this.infoUser.error_mail"
                 ></p>
 
                 <input
@@ -26,8 +26,8 @@
                 />
                 <p
                     class="errors"
-                    v-if="this.info"
-                    v-text="this.info.error_password"
+                    v-if="this.infoUser"
+                    v-text="this.infoUser.error_password"
                 ></p>
 
                 <button class="btn_login" @click="login">Connexion</button>
@@ -51,7 +51,7 @@ export default {
             email: "",
             password: "",
             message: "",
-            info: "",
+            infoUser: "",
             errors: "",
         };
     },
@@ -65,16 +65,16 @@ export default {
                     email: this.email,
                     password: this.password,
                 },
-            }).then((response) => (this.info = response.data));
+            }).then((response) => (this.infoUser = response.data));
 
-            console.log(this.info);
+            console.log(this.infoUser);
 
-            localStorage.setItem("token", this.info.token);
+            localStorage.setItem("token", this.infoUser.token);
 
             // console.log(this.info.id_user);
 
-            if (this.info.succes) {
-                localStorage.setItem("id", this.info.id_user);
+            if (this.infoUser.succes) {
+                localStorage.setItem("id", this.infoUser.id_user);
 
                 location = "http://localhost:8080/profil";
             } else {

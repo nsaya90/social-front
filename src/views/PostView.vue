@@ -25,11 +25,6 @@
             rows="4"
             cols="50"
         />
-        <!-- <p
-            class="errors"
-            v-if="this.errors.description"
-            v-text="errors.description[0]"
-        ></p> -->
 
         <button class="btn_post" @click="post" formaction="post-publication">
             Publié !
@@ -117,6 +112,7 @@ export default {
         flex-direction: column;
         justify-content: center;
         align-items: left;
+        margin-top: 10px;
     }
 
     .btn_upload {
