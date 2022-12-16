@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper_register">
         <div class="box_titre_register">
-            <h2>Inscrivez-vous pour voir les publications.</h2>
+            <h2>Inscription</h2>
         </div>
         <div class="box_register">
             <form class="form_register" action="" @submit.prevent>
@@ -52,19 +52,22 @@
                     v-if="this.errors.password"
                     v-text="errors.password[0]"
                 ></p>
-                <button class="btn_register" @click="register">
+                <button
+                    :disabled="isDisabled"
+                    class="btn_register"
+                    @click="register"
+                >
                     Inscription
                 </button>
             </form>
 
             <h2>{{ message }}</h2>
-
-            <div class="box_lien_login">
-                <p>
-                    Vous possedez déjà un compte ?
-                    <router-link to="/login">Connectez-vous</router-link>
-                </p>
-            </div>
+        </div>
+        <div class="box_lien_login">
+            <p>
+                Vous possedez déjà un compte ?
+                <router-link to="/home">Connectez-vous</router-link>
+            </p>
         </div>
     </div>
 </template>
@@ -82,7 +85,20 @@ export default {
             message: "",
             info: "",
             errors: "",
+            buttonRegister: "",
         };
+    },
+    computed: {
+        isDisabled() {
+            if (
+                this.email === "" ||
+                this.password === "" ||
+                this.firstname === "" ||
+                this.lastname === ""
+            ) {
+                return this.buttonRegister == false;
+            }
+        },
     },
     methods: {
         async register() {
@@ -109,7 +125,7 @@ export default {
             if (this.info.error_mail) {
                 this.message = this.info.error_mail;
             } else {
-                location = "http://localhost:8080/login";
+                location = "http://localhost:8080/home";
             }
 
             console.log(this.info);
@@ -122,35 +138,27 @@ export default {
     /* Styles pour cette Media Queries */
 
     .form_register {
-        height: 70%;
         display: flex;
-        align-items: center;
         flex-direction: column;
-        justify-content: center;
+        height: 100%;
+        width: 260px;
+        text-align: center;
+        margin-top: 60px;
     }
     .form_register input {
-        margin: 10px;
-        height: 30px;
-        width: 200px;
-    }
-
-    .form_register input:focus {
-        transform: translateX(15px);
-        transition: transform 200ms;
-    }
-    .placeholder,
-    ::placeholder {
-        color: #5db7de;
-        font-family: "Roboto", sans-serif;
-        font-weight: 500;
-        font-size: 15px;
+        margin-bottom: 10px;
+        height: 35px;
+        background-color: rgb(243, 239, 239);
+        border-radius: 0.5em;
+        border: lightgrey;
+        padding-left: 15px;
     }
 
     .wrapper_register {
-        height: 87vh;
+        height: 100vh;
         flex-direction: column;
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         align-items: center;
     }
     .box_register {
@@ -171,53 +179,27 @@ export default {
     }
 
     .btn_register {
-        position: relative;
-        font-size: 17px;
-        text-transform: uppercase;
-        text-decoration: none;
-        padding: 1em 1.5em;
-        display: inline-block;
-        border-radius: 6em;
-        transition: all 0.2s;
+        background-color: #4285f4;
         border: none;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
             Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-        font-weight: 500;
+        height: 50px;
         color: white;
-        background-color: #5db7de;
-        margin: 10px;
-    }
-
-    .btn_register:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .btn_register:active {
-        transform: translateY(-1px);
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .btn_register::after {
-        content: "";
-        display: inline-block;
-        height: 100%;
+        font-size: 15px;
+        font-weight: 500;
+        border-radius: 0.5em;
         width: 100%;
-        border-radius: 100px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        transition: all 0.4s;
     }
 
-    .btn_register::after {
-        background-color: #fff;
+    .btn_register input {
+        width: 100%;
     }
 
-    .btn_register:hover::after {
-        transform: scaleX(1.4) scaleY(1.6);
-        opacity: 0;
+    .btn_register button:disabled,
+    button[disabled] {
+        border: 1px solid #999999;
+        background-color: #4286f4be;
+        color: white;
     }
 
     .errors {
@@ -229,6 +211,10 @@ export default {
 
     .box_lien_login {
         font-size: small;
+    }
+    .box_titre_register {
+        border-bottom: 2px lightgray solid;
+        width: 100%;
     }
 }
 </style>

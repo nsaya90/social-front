@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div class="wrapper_home">
         <h1>Bienvenue sur This Social</h1>
         <p>
@@ -46,4 +46,4 @@ export default {
         border: 1px solid black;
     }
 }
-</style>
+</style> -->

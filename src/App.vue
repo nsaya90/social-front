@@ -10,7 +10,7 @@
                 />
             </router-link>
         </div>
-        <div v-else>
+        <!-- <div v-else>
             <router-link to="/"
                 ><img
                     src="../src/assets/logo_social.png"
@@ -19,7 +19,7 @@
                     height="80"
                 />
             </router-link>
-        </div>
+        </div> -->
     </nav>
     <router-view />
 </template>
