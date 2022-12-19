@@ -101,33 +101,6 @@ export default {
         text-align: center;
     }
 
-    .box_update {
-        background: #a7d0dd;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .form_update {
-        display: flex;
-        flex-direction: column;
-        padding: 15px;
-    }
-    .form_update input {
-        margin: 10px;
-        height: 25px;
-    }
-
-    .btn_form-update {
-        background-color: lightgray;
-        border: none;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-            Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-        height: 30px;
-        font-weight: bolder;
-        border-radius: 0.5em;
-        width: 90%;
-    }
-
     .lien_register {
         font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
             Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
@@ -142,6 +115,18 @@ export default {
     }
     .box_user-name h3 {
         margin-left: 5px;
+    }
+    .btn_form-update {
+        background-color: lightgray;
+        border: none;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        height: 50px;
+
+        font-size: 15px;
+        font-weight: 500;
+        border-radius: 0.5em;
+        width: 100%;
     }
 }
 </style>

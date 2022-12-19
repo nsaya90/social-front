@@ -66,7 +66,7 @@
         <div class="box_lien_login">
             <p>
                 Vous possedez déjà un compte ?
-                <router-link to="/home">Connectez-vous</router-link>
+                <router-link to="/">Connectez-vous</router-link>
             </p>
         </div>
     </div>

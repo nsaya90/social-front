@@ -1,63 +1,73 @@
 <template>
     <NavUser />
-    <div class="wrapper_profil">
-        <!-- <div class="box_info">
-            <h2>Votre profil</h2>
-            <p>Nom : {{ info.firstname }}</p>
-            <p>Prénom : {{ info.lastname }}</p>
-            <p>Email : {{ info.email }}</p>
-        </div> -->
-
+    <div class="wrapper_update">
         <div class="box_update">
             <form class="form_update" action="" @submit.prevent>
-                <input
-                    class="form_input"
-                    type="text"
-                    placeholder="Nom"
-                    v-model="firstname"
-                />
+                <div class="box_input">
+                    <p>Nom</p>
+                    <input
+                        class="form_input"
+                        type="text"
+                        :placeholder="info.firstname"
+                        v-model="firstname"
+                    />
+                </div>
                 <p
                     class="errors"
                     v-if="this.errors.firstname"
                     v-text="errors.firstname[0]"
                 ></p>
 
-                <input
-                    class="form_input"
-                    type="text"
-                    placeholder="Prénom"
-                    v-model="lastname"
-                />
+                <div class="box_input">
+                    <p>Prénom</p>
+                    <input
+                        class="form_input"
+                        type="text"
+                        :placeholder="info.lastname"
+                        v-model="lastname"
+                    />
+                </div>
                 <p
                     class="errors"
                     v-if="this.errors.lastname"
                     v-text="errors.lastname[0]"
                 ></p>
 
-                <input
-                    class="form_input"
-                    type="email"
-                    placeholder="Email"
-                    v-model="email"
-                />
+                <div class="box_input">
+                    <p>Email</p>
+                    <input
+                        class="form_input"
+                        type="email"
+                        :placeholder="info.email"
+                        v-model="email"
+                    />
+                </div>
                 <p
                     class="errors"
                     v-if="this.errors.email"
                     v-text="errors.email[0]"
                 ></p>
 
-                <input
-                    class="form_input"
-                    type="password"
-                    placeholder="Mot de passe"
-                    v-model="password"
-                />
+                <div class="box_input">
+                    <p>Mot de passe</p>
+                    <input
+                        class="form_input"
+                        type="password"
+                        v-model="password"
+                    />
+                </div>
                 <p
                     class="errors"
                     v-if="this.errors.password"
                     v-text="errors.password[0]"
                 ></p>
-                <button class="form_update" @click="userUpdate">Validez</button>
+                <button
+                    class="btn_update"
+                    :disabled="isDisabled"
+                    @click="userUpdate"
+                >
+                    Validez
+                </button>
             </form>
         </div>
     </div>
@@ -84,6 +94,7 @@ export default {
             info: "",
             infoUpdate: "",
             update: "",
+            buttonUpdate: "",
             errors: "",
         };
     },
@@ -93,6 +104,18 @@ export default {
             headers: { Authorization: `Bearer ${token}` },
             url: "http://127.0.0.1:8000/api/profil/" + idUser,
         }).then((response) => (this.info = response.data.user));
+    },
+    computed: {
+        isDisabled() {
+            if (
+                this.email === "" ||
+                this.password === "" ||
+                this.firstname === "" ||
+                this.lastname === ""
+            ) {
+                return this.buttonUpdate == false;
+            }
+        },
     },
     methods: {
         async userUpdate() {
@@ -122,11 +145,8 @@ export default {
 
 <style>
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    .wrapper_profil {
-        height: 85vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
+    .wrapper_update {
+        height: 50vh;
     }
     span.description {
         font-weight: lighter;
@@ -140,37 +160,45 @@ export default {
         text-align: center;
     }
 
-    .box_update {
-        background: #a7d0dd;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
     .form_update {
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         padding: 15px;
+        height: 340px;
     }
     .form_update input {
-        margin: 10px;
-        height: 25px;
+        height: 35px;
+        background-color: white;
+        border: 0;
+        padding-left: 15px;
     }
 
     .btn_update {
-        background-color: lightgray;
         border: none;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
             Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-        height: 30px;
+        height: 40px;
         color: white;
         font-weight: inherit;
+        font-size: medium;
         border-radius: 0.5em;
+        background-color: #4285f4;
     }
 
     .btn_update button:disabled,
     button[disabled] {
         border: 1px solid #999999;
         background-color: #4286f4be;
+    }
+    .box_input {
+        border-bottom: 1px solid gray;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .box_input p {
+        font-weight: bolder;
     }
 }
 </style>
