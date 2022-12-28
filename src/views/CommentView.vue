@@ -122,14 +122,13 @@ export default {
 
     .box_addComment {
         border-top: 2px solid black;
-        position: fixed;
         width: 100%;
     }
 
     .form_comment {
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: center;
     }
 
     .form_comment textarea {

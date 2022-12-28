@@ -44,6 +44,8 @@ export default {
         display: flex;
         justify-content: space-around;
         align-items: center;
+        border-bottom: 2px black solid;
+        height: 83px;
     }
 
     .button-2 {
