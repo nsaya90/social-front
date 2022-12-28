@@ -7,6 +7,7 @@
 - Utilisation des requêtes api fetch
 - Traitement des informations en base de donnée
 
+API : https://github.com/nsaya90/social-api
 Framework : VueJS
 
 <img align="left" src="img/1.home.JPG" width="180" height="400">
